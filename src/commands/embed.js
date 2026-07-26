@@ -37,7 +37,7 @@ export default {
 
             // 4. Monta o visual "Container"
             const customEmbed = new EmbedBuilder()
-                .setColor('#5f0881') // Cor escura invisível do Discord
+                .setColor('#ff7300') // Cor escura invisível do Discord
                 .setDescription(descricao);
 
             if (titulo) customEmbed.setTitle(titulo);
