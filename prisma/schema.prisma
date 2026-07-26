@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:../data/corregedoria.db"
+}
+
+model Config {
+  guildId              String  @id
+  hierarchyChannel     String?
+  advLogsChannel       String?
+  promotionLogsChannel String?
+  advVerbalRole        String?
+  adv1Role             String?
+  adv2Role             String?
+}
+
+model Division {
+  id      Int            @id @default(autoincrement())
+  guildId String
+  name    String
+  emoji   String
+  roles   DivisionRole[]
+}
+
+model DivisionRole {
+  id         Int      @id @default(autoincrement())
+  divisionId Int
+  roleId     String
+  division   Division @relation(fields: [divisionId], references: [id])
+}
+
+model PoliceProfile {
+  id      Int    @id @default(autoincrement())
+  guildId String
+  userId  String
+
+  @@unique([guildId, userId])
+}
+
+model Advertencia {
+  id          Int      @id @default(autoincrement())
+  guildId     String
+  userId      String
+  moderatorId String
+  type        String
+  reason      String
+  expiresAt   DateTime
+  createdAt   DateTime @default(now())
+}
+
+model Promotion {
+  id         Int      @id @default(autoincrement())
+  guildId    String
+  userId     String
+  fivemId    String
+  newRole    String
+  reason     String
+  promotedBy String
+  createdAt  DateTime @default(now())
+}
