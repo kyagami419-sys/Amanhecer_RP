@@ -64,17 +64,7 @@ export default {
                 .setLabel('Conectar')
                 .setURL(linkCfx)
                 .setStyle(ButtonStyle.Link)
-                .setEmoji('🔗'),
-            new ButtonBuilder()
-                .setLabel('Loja VIP')
-                .setURL('https://sua-loja-aqui.com') 
-                .setStyle(ButtonStyle.Link)
-                .setEmoji('🛒'),
-            new ButtonBuilder()
-                .setLabel('Livro de Regras')
-                .setURL('https://seudiscord.com/regras') 
-                .setStyle(ButtonStyle.Link)
-                .setEmoji('📚')
+                .setEmoji('🔗')
         );
 
         const embedInicial = await gerarEmbed();
